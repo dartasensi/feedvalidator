@@ -9,11 +9,11 @@ RUN a2dissite 000-default
 
 RUN a2enmod cgid
 RUN a2enmod rewrite
-RUN echo 'ServerName feedvalidator.org' >>/etc/apache2/apache2.conf
+RUN echo 'ServerName feedvalidator.org' >> /etc/apache2/apache2.conf
 
 WORKDIR /feedvalidator
 
-ADD . /feedvalidator
+ADD ./site /feedvalidator
 ADD sites-available-feedvalidator.conf /etc/apache2/sites-available/feedvalidator.conf
 
 RUN a2ensite feedvalidator
